@@ -97,3 +97,11 @@ High penalties encourage the optimizer to complete as many transport orders as p
 ChatGPT was used for code generation, implementation guidance, debugging, automated test creation and documentation.
 
 The application was executed and tested locally, with generated routes validated against the implemented constraints.
+
+## Development Time
+
+Estimated active development time: approximately 7 hours.
+
+This includes requirements analysis, project setup, optimization algorithm implementation, Streamlit interface development, business constraint testing, debugging, and documentation.
+
+AI assistance was used to accelerate implementation, while the application was executed and tested locally.

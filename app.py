@@ -94,6 +94,11 @@ if "optimization_result" in st.session_state:
 
         st.subheader(f"Truck {truck.id}")
 
+        completed_count = sum(
+            1 for stop in route if stop.action == "delivery"
+        )
+        st.write(f"Completed orders: **{completed_count}**")
+
         route_time = calculate_truck_route_time(route)
 
         c1, c2, c3 = st.columns(3)
