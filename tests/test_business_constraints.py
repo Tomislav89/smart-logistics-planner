@@ -10,6 +10,7 @@ def make_route(*stops):
     ]
 
 
+# TEST: Verify that a truck cannot carry a load exceeding its maximum weight capacity.
 def test_truck_cannot_exceed_weight_capacity():
     route = make_route(
         RouteStop("L1", "pickup", "N01"),
@@ -23,6 +24,7 @@ def test_truck_cannot_exceed_weight_capacity():
     assert not validate_truck_route(TRUCKS[0], route)
 
 
+# TEST: Verify that a truck cannot carry more machines simultaneously than allowed.
 def test_truck_cannot_exceed_machine_count():
     from src.constraints import can_truck_carry_load
     from src.models import Machine, Truck
@@ -38,6 +40,7 @@ def test_truck_cannot_exceed_machine_count():
     assert not can_truck_carry_load(truck, machines)
 
 
+# TEST: Verify that a delivery is rejected if the machine has not been picked up first.
 def test_delivery_before_pickup_is_rejected():
     route = make_route(
         RouteStop("L3", "delivery", "N01"),
@@ -47,6 +50,7 @@ def test_delivery_before_pickup_is_rejected():
     assert not validate_truck_route(TRUCKS[0], route)
 
 
+# TEST: Verify that a route is rejected if the truck does not return to depot L0.
 def test_missing_return_to_depot_is_rejected():
     route = [
         RouteStop("L0", "start", None),
@@ -57,6 +61,7 @@ def test_missing_return_to_depot_is_rejected():
     assert not validate_truck_route(TRUCKS[0], route)
 
 
+# TEST: Verify that a valid route satisfying all business constraints is accepted.
 def test_correct_route_is_accepted():
     route = make_route(
         RouteStop("L1", "pickup", "N01"),

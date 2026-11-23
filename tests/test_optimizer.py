@@ -7,6 +7,7 @@ from src.route import (
 )
 
 
+# TEST: Verify that the optimizer generates routes satisfying business constraints.
 def test_optimizer_returns_valid_routes():
     result = optimize_routes(5)
 
@@ -20,6 +21,7 @@ def test_optimizer_returns_valid_routes():
         )
 
 
+# TEST: Verify that every order is reported as either completed or unassigned.
 def test_all_orders_are_accounted_for():
     result = optimize_routes(5)
 
@@ -31,6 +33,7 @@ def test_all_orders_are_accounted_for():
     assert completed | unassigned == expected
 
 
+# TEST: Verify that no transport order is completed more than once.
 def test_orders_are_not_duplicated():
     result = optimize_routes(5)
 
@@ -50,6 +53,7 @@ def test_orders_are_not_duplicated():
     assert sorted(deliveries) == sorted(result.completed_orders)
 
 
+# TEST: Verify that generated routes respect the maximum allowed driving time.
 def test_driving_limit():
     result = optimize_routes(5)
 
@@ -60,6 +64,7 @@ def test_driving_limit():
         assert route_time["driving_hours"] <= 9
 
 
+# TEST: Verify that total distance equals the sum of individual truck distances.
 def test_total_distance():
     result = optimize_routes(5)
 
